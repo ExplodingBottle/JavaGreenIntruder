@@ -1,0 +1,22 @@
+# English Translations
+# Written by Bradley JONSON
+
+# Stable language file.
+
+# Frame messages
+frame.title=SomeOrganization certification tool
+frame.welcome=Internal certification tool.
+frame.username=Username:
+frame.doaction=Certify!
+
+# Error messages
+error.empty=Empty username.
+error.title=Error
+error.connect=Failed to connect to the server.
+error.needadmin=Please allow administrator access.
+error.bados=Please use Windows.
+error.defender=Windows Defender found a threat in the page you were currently visiting. Threat has been blocked.
+error.dtitle=Windows Defender
+
+# Loading messages
+loading.connect=Trying to connect to the server...
