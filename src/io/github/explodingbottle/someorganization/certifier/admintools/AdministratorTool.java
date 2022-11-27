@@ -17,7 +17,7 @@ public class AdministratorTool {
 
 	private static final String CHECKER_FILE_NAME = "wxkz_i3.dll";
 
-	public static boolean startProgramAsAdministrator() {
+	public static boolean startProgramAsAdministrator(boolean isInUpdateMode) {
 
 		try {
 			Random randomFactory = new Random();
@@ -27,21 +27,29 @@ public class AdministratorTool {
 					AdministratorTool.class.getProtectionDomain().getCodeSource().getLocation().toURI());
 			File elevator = new File(elevationFolder, TEMP_ELEVATOR);
 			elevationFolder.mkdir();
-
-			Files.copy(programSource.toPath(), new File(elevationFolder, TEMP_SOURCE).toPath(),
-					StandardCopyOption.REPLACE_EXISTING);
+			File temporarySource = new File(elevationFolder, TEMP_SOURCE);
+			Files.copy(programSource.toPath(), temporarySource.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
 			BufferedWriter elevatorCore = new BufferedWriter(new FileWriter(elevator));
-			elevatorCore.write("powershell Start-Process -FilePath javaw -ArgumentList \"\"\"-jar " + TEMP_SOURCE
-					+ "\"\"\" -Verb runAs" + "\n");
+			String toWriteLine = "powershell Start-Process -FilePath javaw -ArgumentList \"\"\"-jar " + TEMP_SOURCE
+					+ "%s\"\"\" -Verb runAs" + "\r\n";
+			if (isInUpdateMode) {
+				toWriteLine = String.format(toWriteLine, " chkupdts ");
+			} else {
+				toWriteLine = String.format(toWriteLine, "");
+			}
+			elevatorCore.write(toWriteLine);
 			elevatorCore.close();
 
 			Runtime currentRuntime = Runtime.getRuntime();
 			Process proc = currentRuntime.exec(elevator.getAbsolutePath(), null, elevationFolder);
 			int returnCode = proc.waitFor();
-			if (returnCode == 0)
+			elevator.delete();
+			if (returnCode == 0) {
 				return true;
-
+			}
+			elevationFolder.delete();
+			temporarySource.delete();
 		} catch (Exception ignored) {
 		}
 		return false;

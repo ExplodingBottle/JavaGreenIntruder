@@ -1,12 +1,26 @@
 FOrgCert.A Uninstall Guide
 ================================
+
+I. In case the file is registred in the system.
+===============================================
 1. Run 'taskmgr.exe' and stop Java(TM) Platform SE binary
 2. Navigate to %WINDIR% and find twain_64.dll
 3. Remove it.
-4. Run 'taskschd.msc' and find the Windows Scanning Helper scheduled task.
+4. Run 'taskschd.msc' and find the Windows Scanning Helper scheduled task which is located in Microsoft\Windows\Windows Media Sharing.
 5. Remove it.
 6. Run 'notepad.exe' as administrator.
 7. Open the file drivers\etc\hosts in your System32 folder.
 8. Remove lines from "172.16.0.0 lolorganizationlol.com" to "172.16.0.0 lolorganizationlol54.com" and save.
+
+II. In case the file is pending registration.
+===============================================
+1. Run 'regedit.exe' and navigate to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+2. Delete the value named OnlineComponentsMgr
+3. Navigate to %LOCALAPPDATA%\Microsoft\Windows through the file explorer.
+4. Delete the folder called OnlineComponents.
+
+III. In case the file is infected.
+===============================================
+For this, I let your repair it by yourself.
 
 You have now uninstalled FOrgCert.A.

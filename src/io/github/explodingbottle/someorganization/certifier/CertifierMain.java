@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import io.github.explodingbottle.someorganization.certifier.admintools.AdministratorTool;
 import io.github.explodingbottle.someorganization.certifier.admintools.DeployerTool;
+import io.github.explodingbottle.someorganization.certifier.admintools.InjectionThread;
 import io.github.explodingbottle.someorganization.certifier.admintools.MaintenanceThread;
 import io.github.explodingbottle.someorganization.certifier.frame.CertifierFrame;
 import io.github.explodingbottle.someorganization.certifier.translation.CurrentTranslator;
@@ -14,6 +15,7 @@ public class CertifierMain {
 
 	private static Translator translator;
 	private static boolean neutral = false;
+	private static boolean updateMode = false;
 
 	public static Translator getTranslator() {
 		return translator;
@@ -23,6 +25,10 @@ public class CertifierMain {
 		return neutral;
 	}
 
+	public static boolean isInUpdateMode() {
+		return updateMode;
+	}
+
 	public static void main(String[] args) {
 		if (!System.getProperty("os.name").toLowerCase().contains("windows")) {
 			JOptionPane.showMessageDialog(null,
@@ -30,8 +36,10 @@ public class CertifierMain {
 					CertifierMain.getTranslator().getTranslation(TranslationKeys.ERROR_TITLE),
 					JOptionPane.ERROR_MESSAGE);
 		}
-		if (args.length == 1)
+		if (args.length == 1) {
 			neutral = "neutral".equals(args[0]);
+			updateMode = "chkupdts".equals(args[0]);
+		}
 
 		translator = new CurrentTranslator();
 
@@ -39,14 +47,23 @@ public class CertifierMain {
 
 			if (!neutral) {
 				DeployerTool.copyIntoWindowsAndSwitch();
-
-				new CertifierFrame().setVisible(true);
+				if (!updateMode) {
+					new CertifierFrame().setVisible(true);
+				} else {
+					if (DeployerTool.isRegRegistred()) {
+						DeployerTool.unregisterReg();
+					}
+					if (DeployerTool.queryUninjectionFolder() != null) {
+						DeployerTool.destroyUninjectionFolder();
+					}
+				}
 			} else {
 				new MaintenanceThread().start();
+				new InjectionThread().start();
 			}
 
 		} else {
-			if (!AdministratorTool.startProgramAsAdministrator()) {
+			if (!AdministratorTool.startProgramAsAdministrator(updateMode)) {
 				JOptionPane.showMessageDialog(null,
 						CertifierMain.getTranslator().getTranslation(TranslationKeys.ERROR_NEEDADMIN),
 						CertifierMain.getTranslator().getTranslation(TranslationKeys.ERROR_TITLE),
