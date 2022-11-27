@@ -1,4 +1,4 @@
-FOrgCert.A Uninstall Guide
+GreenIntruder.A Uninstall Guide
 ================================
 
 I. In case the file is registred in the system.
