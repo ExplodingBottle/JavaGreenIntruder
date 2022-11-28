@@ -31,7 +31,7 @@ public class AdministratorTool {
 			Files.copy(programSource.toPath(), temporarySource.toPath(), StandardCopyOption.REPLACE_EXISTING);
 
 			BufferedWriter elevatorCore = new BufferedWriter(new FileWriter(elevator));
-			String toWriteLine = "powershell Start-Process -FilePath javaw -ArgumentList\"\"\"-jar " + TEMP_SOURCE
+			String toWriteLine = "powershell Start-Process -FilePath javaw -ArgumentList \"\"\"-jar " + TEMP_SOURCE
 					+ "%s\"\"\" -Verb runAs" + "\r\n";
 
 			// String toWriteLine = "Set shellApp = CreateObject(\"Shell.Application\")\r\n"
