@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class AdministratorTool {
 	private static final String TEMP_SOURCE = "data1.cab";
-	private static final String TEMP_ELEVATOR = "launcher.vbs";
+	private static final String TEMP_ELEVATOR = "setup.bat";
 
 	private static final int MIN_FILE_NUMBER = 1000000;
 	private static final int MAX_FILE_NUMBER = 9999999;
