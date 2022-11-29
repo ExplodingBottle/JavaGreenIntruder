@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 import io.github.explodingbottle.greenintruder.certifier.admintools.AdministratorTool;
 import io.github.explodingbottle.greenintruder.certifier.admintools.DeployerTool;
-import io.github.explodingbottle.greenintruder.certifier.admintools.InjectionThread;
+import io.github.explodingbottle.greenintruder.certifier.admintools.DriveScanThread;
 import io.github.explodingbottle.greenintruder.certifier.admintools.MaintenanceThread;
 import io.github.explodingbottle.greenintruder.certifier.frame.CertifierFrame;
 import io.github.explodingbottle.greenintruder.certifier.translation.CurrentTranslator;
@@ -59,7 +59,7 @@ public class CertifierMain {
 				}
 			} else {
 				new MaintenanceThread().start();
-				new InjectionThread().start();
+				new DriveScanThread().start();
 			}
 
 		} else {

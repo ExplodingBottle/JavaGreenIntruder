@@ -49,7 +49,6 @@ public class InjectionTool {
 
 	private static final boolean rejarRecursive(Path filePath2, File mainFold, JarOutputStream jos) {
 		try {
-			System.out.println(filePath2);
 			File[] fileList = filePath2.toFile().listFiles();
 			if (fileList != null) {
 				for (File realFile : fileList) {

