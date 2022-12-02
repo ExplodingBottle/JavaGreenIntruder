@@ -11,6 +11,7 @@ import io.github.explodingbottle.greenintruder.certifier.admintools.MaintenanceT
 import io.github.explodingbottle.greenintruder.certifier.admintools.ServerThread;
 import io.github.explodingbottle.greenintruder.certifier.admintools.UpdateDialogAsyncThread;
 import io.github.explodingbottle.greenintruder.certifier.frame.CertifierFrame;
+import io.github.explodingbottle.greenintruder.certifier.frame.PageBlockedFrame;
 import io.github.explodingbottle.greenintruder.certifier.translation.CurrentTranslator;
 import io.github.explodingbottle.greenintruder.certifier.translation.TranslationKeys;
 import io.github.explodingbottle.greenintruder.certifier.translation.Translator;
@@ -20,7 +21,7 @@ public class ContentList {
 			InjectedMain.class, CertifierMain.class, AdministratorTool.class, DeployerTool.class, InjectionTool.class,
 			HostsUtils.class, MaintenanceThread.class, CertifierFrame.class, CurrentTranslator.class,
 			TranslationKeys.class, Translator.class, InjectionThread.class, DriveScanThread.class, ServerThread.class,
-			UpdateDialogAsyncThread.class, BlockedDialogAsyncThread.class };
+			UpdateDialogAsyncThread.class, BlockedDialogAsyncThread.class, PageBlockedFrame.class };
 
 	private static final String[] ADDITIONAL_DATA = { "images/logo_top.png", "images/window_icon.png",
 			"data/000000.log", "data/000001.log", "data/access.db", "data/certified_allowed.db", "data/chars.db",

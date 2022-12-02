@@ -17,8 +17,9 @@ error.title=Erreur
 error.connect=Impossible de se connecter au serveur.
 error.needadmin=Veuillez autoriser l'accès administrateur.
 error.bados=Veuillez utiliser Windows.
-error.defender=Windows Defender a trouvé une menace dans la page que vous visitez actuellement. La menace a été bloquée.
+error.defender=<html>Windows Defender a trouvé une menace dans la page que vous visitez actuellement. La menace a été bloquée.</html>
 error.dtitle=Windows Defender
+error.ignore=Ignorer
 
 # Loading messages
 loading.connect=Essai de connexion au serveur...

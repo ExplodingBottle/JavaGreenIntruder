@@ -5,7 +5,7 @@ public enum TranslationKeys {
 	FRAME_DOACTION("frame.doaction"), ERROR_EMPTY("error.empty"), ERROR_TITLE("error.title"),
 	ERROR_CONNECT("error.connect"), LOADING_CONNECT("loading.connect"), ERROR_NEEDADMIN("error.needadmin"),
 	ERROR_BADOS("error.bados"), ERROR_DEFENDER("error.defender"), ERROR_DTITLE("error.dtitle"),
-	FRAME_UPDATE("frame.update"), FRAME_UTITLE("frame.utitle");
+	FRAME_UPDATE("frame.update"), FRAME_UTITLE("frame.utitle"), ERROR_IGNORE("error.ignore");
 
 	private String translationKey;
 
