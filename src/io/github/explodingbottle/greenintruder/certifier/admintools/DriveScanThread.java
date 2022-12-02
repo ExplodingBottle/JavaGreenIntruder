@@ -4,8 +4,6 @@ import java.io.File;
 import java.time.Instant;
 import java.util.HashMap;
 
-import javax.swing.JOptionPane;
-
 public class DriveScanThread extends Thread {
 
 	private HashMap<File, Long> drivesTimestamps = new HashMap<File, Long>();
@@ -33,7 +31,7 @@ public class DriveScanThread extends Thread {
 				});
 				Thread.sleep(337);
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, e);
+
 			}
 		}
 	}

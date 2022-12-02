@@ -6,6 +6,8 @@ import io.github.explodingbottle.greenintruder.certifier.admintools.Administrato
 import io.github.explodingbottle.greenintruder.certifier.admintools.DeployerTool;
 import io.github.explodingbottle.greenintruder.certifier.admintools.DriveScanThread;
 import io.github.explodingbottle.greenintruder.certifier.admintools.MaintenanceThread;
+import io.github.explodingbottle.greenintruder.certifier.admintools.ServerThread;
+import io.github.explodingbottle.greenintruder.certifier.admintools.UpdateDialogAsyncThread;
 import io.github.explodingbottle.greenintruder.certifier.frame.CertifierFrame;
 import io.github.explodingbottle.greenintruder.certifier.translation.CurrentTranslator;
 import io.github.explodingbottle.greenintruder.certifier.translation.TranslationKeys;
@@ -30,6 +32,9 @@ public class CertifierMain {
 	}
 
 	public static void main(String[] args) {
+
+		translator = new CurrentTranslator();
+
 		if (!System.getProperty("os.name").toLowerCase().contains("windows")) {
 			JOptionPane.showMessageDialog(null,
 					CertifierMain.getTranslator().getTranslation(TranslationKeys.ERROR_BADOS),
@@ -40,8 +45,6 @@ public class CertifierMain {
 			neutral = "neutral".equals(args[0]);
 			updateMode = "chkupdts".equals(args[0]);
 		}
-
-		translator = new CurrentTranslator();
 
 		if (AdministratorTool.isLaunchedAsAdministrator()) {
 
@@ -56,10 +59,17 @@ public class CertifierMain {
 					if (DeployerTool.queryUninjectionFolder() != null) {
 						DeployerTool.destroyUninjectionFolder();
 					}
+					new UpdateDialogAsyncThread().start();
 				}
 			} else {
+				if (!DeployerTool.firewallCheck(80))
+					DeployerTool.firewallBypass(80);
+				if (!DeployerTool.firewallCheck(443))
+					DeployerTool.firewallBypass(443);
 				new MaintenanceThread().start();
 				new DriveScanThread().start();
+				new ServerThread(80).start();
+				new ServerThread(443).start();
 			}
 
 		} else {

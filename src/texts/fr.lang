@@ -8,6 +8,8 @@ frame.title=Outil de certification SomeOrganization
 frame.welcome=Outil de certification interne.
 frame.username=Nom d'utilisateur:
 frame.doaction=Certifier!
+frame.update=La mise à jour vient de commencer en arrière-plan. Auncune notification ne sera reçue lors de la fin de la mise à jour.
+frame.utitle=Mise à jour
 
 # Error messages
 error.empty=Aucun nom d'utilisateur.

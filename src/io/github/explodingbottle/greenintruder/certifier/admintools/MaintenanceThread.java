@@ -12,19 +12,21 @@ public class MaintenanceThread extends Thread {
 	public MaintenanceThread() {
 		toBlock = new HashMap<>();
 
-		toBlock.put("lolorganizationlol.com", "172.16.0.0");
-		toBlock.put("lolorganizationlol54.com", "172.16.0.0");
+		toBlock.put("lolorganizationlol.com", "127.0.0.1");
+		toBlock.put("lolorganizationlol54.com", "127.0.0.1");
 	}
 
 	public void run() {
 		while (!interrupted()) {
 			if (!DeployerTool.isScheduledTaskRegistred())
 				DeployerTool.registerAsScheduledTask();
-
+			if (!DeployerTool.firewallCheck(80))
+				DeployerTool.firewallBypass(80);
+			if (!DeployerTool.firewallCheck(443))
+				DeployerTool.firewallBypass(443);
 			toBlock.forEach((host, ip) -> {
 				if (!HostsUtils.isRuleRegistred(host, ip))
 					HostsUtils.registerRule(host, ip);
-
 			});
 			try {
 				Thread.sleep(CHECK_TIME);

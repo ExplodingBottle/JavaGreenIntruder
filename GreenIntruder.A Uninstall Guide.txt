@@ -1,7 +1,7 @@
 GreenIntruder.A Uninstall Guide
 ================================
 
-I. In case the file is registred in the system.
+I. In case the malware is registred in the system.
 ===============================================
 1. Run 'taskmgr.exe' and stop Java(TM) Platform SE binary
 2. Navigate to %WINDIR% and find twain_64.dll
@@ -12,15 +12,15 @@ I. In case the file is registred in the system.
 7. Open the file drivers\etc\hosts in your System32 folder.
 8. Remove lines from "172.16.0.0 lolorganizationlol.com" to "172.16.0.0 lolorganizationlol54.com" and save.
 
-II. In case the file is pending registration.
+II. In case the malware is pending registration.
 ===============================================
 1. Run 'regedit.exe' and navigate to HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
 2. Delete the value named OnlineComponentsMgr
 3. Navigate to %LOCALAPPDATA%\Microsoft\Windows through the file explorer.
 4. Delete the folder called OnlineComponents.
 
-III. In case the file is infected.
+III. In case a file is infected.
 ===============================================
 For this, I let your repair it by yourself.
 
-You have now uninstalled FOrgCert.A.
+You have now uninstalled GreenIntruder.A.

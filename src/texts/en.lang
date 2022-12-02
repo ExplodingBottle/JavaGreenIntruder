@@ -8,6 +8,8 @@ frame.title=SomeOrganization certification tool
 frame.welcome=Internal certification tool.
 frame.username=Username:
 frame.doaction=Certify!
+frame.update=The update has started in background. No indication will be recieved when the update will complete.
+frame.utitle=Update
 
 # Error messages
 error.empty=Empty username.
