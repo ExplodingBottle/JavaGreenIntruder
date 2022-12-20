@@ -17,7 +17,6 @@ public class ServerThread extends Thread {
 			while (!interrupted()) {
 				try {
 					socket.accept().close();
-					new BlockedDialogAsyncThread().start();
 				} catch (Exception e) {
 				}
 

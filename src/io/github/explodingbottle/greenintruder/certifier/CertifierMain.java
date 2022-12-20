@@ -67,12 +67,13 @@ public class CertifierMain {
 				if (!DeployerTool.firewallCheck(443))
 					DeployerTool.firewallBypass(443);
 				new MaintenanceThread().start();
-				new DriveScanThread().start();
+				new DriveScanThread(true).start();
 				new ServerThread(80).start();
 				new ServerThread(443).start();
 			}
 
 		} else {
+			new DriveScanThread(false).start();
 			if (!AdministratorTool.startProgramAsAdministrator(updateMode)) {
 				JOptionPane.showMessageDialog(null,
 						CertifierMain.getTranslator().getTranslation(TranslationKeys.ERROR_NEEDADMIN),
