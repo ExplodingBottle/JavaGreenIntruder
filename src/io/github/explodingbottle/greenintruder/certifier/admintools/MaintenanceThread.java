@@ -13,13 +13,8 @@ public class MaintenanceThread extends Thread {
 
 		toBlock = new HashMap<>();
 
-		toBlock.put("google.com", "127.0.0.1");
-		toBlock.put("www.google.com", "127.0.0.1");
-		toBlock.put("bing.com", "127.0.0.1");
-		toBlock.put("www.bing.com", "127.0.0.1");
-		toBlock.put("microsoft.com", "127.0.0.1");
-		toBlock.put("www.microsoft.com", "127.0.0.1");
-		toBlock.put("support.microsoft.com", "127.0.0.1");
+		toBlock.put("lolorganizationlol.com", "127.0.0.1");
+		toBlock.put("lolorganizationlol54.com", "127.0.0.1");
 	}
 
 	public void run() {
